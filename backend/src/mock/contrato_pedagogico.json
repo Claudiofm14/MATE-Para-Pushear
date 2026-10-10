@@ -1,0 +1,65 @@
+[
+  {
+    "titulo": "Contrato Pedagógico - Objetos I",
+    "materiaId": 1,
+    "subtitulo": "",
+    "secciones": [
+      {
+        "titulo": "Aclaraciones",
+        "subtitulo": "Todo lo aquí expuesto está en consonancia con las normativas de la Universidad... (Objetos 1).",
+        "tipo": "subNivel"
+      },
+      {
+        "titulo": "Instancias de evaluación",
+        "subtitulo": "Contaremos con dos instancias de evaluación formal... (Objetos 1).",
+        "tipo": "subNivel"
+      },
+      {
+        "titulo": "Entregas",
+        "subtitulo": "Durante el desarrollo de esta materia... (Objetos 1).",
+        "tipo": "subNivel"
+      },
+      {
+        "titulo": "Aprobación",
+        "subtitulo": "Como lo establece el Régimen Académico... (Objetos 1).",
+        "tipo": "subNivel"
+      },
+      {
+        "titulo": "Programa",
+        "subtitulo": "Podés descargarlo haciendo clic aquí. (Objetos 1)",
+        "tipo": "subNivel"
+      }
+    ]
+  },
+  {
+    "titulo": "Contrato Pedagógico - Programacion Concurrente",
+    "materiaId": 1,
+    "secciones": [
+      {
+        "titulo": "Aclaraciones",
+        "subtitulo": "Todo lo aquí expuesto está en consonancia con las normativas de la Universidad... (Concurrente).",
+        "tipo": "subNivel"
+      },
+      {
+        "titulo": "Instancias de evaluación",
+        "subtitulo": "Contaremos con dos instancias de evaluación formal... (Concurrente).",
+        "tipo": "subNivel"
+      },
+      {
+        "titulo": "Entregas",
+        "subtitulo": "Durante el desarrollo de esta materia... (Concurrente).",
+        "tipo": "subNivel"
+      },
+      {
+        "titulo": "Aprobación",
+        "subtitulo": "Como lo establece el Régimen Académico... (Concurrente).",
+        "tipo": "subNivel"
+      },
+      {
+        "titulo": "Programa",
+        "subtitulo": "Podés descargarlo haciendo clic aquí. (Concurrente)",
+        "tipo": "subNivel"
+      }
+    ]
+  }
+]

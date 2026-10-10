@@ -1,0 +1,297 @@
+[
+  {
+    "titulo": "Material Introductorio - Programación con Objetos",
+    "materiaId": 1,
+    "contenedores": [
+      {
+        "titulo": "Conceptos Básicos",
+        "subtitulo": "Introducción a la programación orientada a objetos: clases, objetos y encapsulamiento",
+        "tipo": "bienvenida"
+      },
+      {
+        "titulo": "Ejercicios Prácticos",
+        "subtitulo": "Práctica con ejemplos reales de implementación de clases",
+        "tipo": "detalleCursada",
+        "hijos": [
+          {
+            "titulo": "Ejercicio 1 - Clase Persona",
+            "subtitulo": "Crear una clase con atributos básicos",
+            "tipo": "subNivel"
+          },
+          {
+            "titulo": "Ejercicio 2 - Herencia",
+            "subtitulo": "Implementar herencia entre clases",
+            "tipo": "subNivel"
+          },
+          {
+            "titulo": "Ejercicio 3 - Polimorfismo",
+            "subtitulo": "Uso de interfaces y métodos abstractos",
+            "tipo": "subNivel"
+          }
+        ]
+      },
+      {
+        "titulo": "Recursos Adicionales",
+        "subtitulo": "",
+        "tipo": "canalDeComunicacion",
+        "hijos": [
+          {
+            "titulo": "Documentación Oracle Java",
+            "subtitulo": "docs.oracle.com/javase",
+            "tipo": "subNivel"
+          },
+          {
+            "titulo": "Tutoriales en Video",
+            "subtitulo": "youtube.com/programacion-java",
+            "tipo": "subNivel"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "titulo": "Material Avanzado - Estructuras de Datos",
+    "materiaId": 1,
+    "contenedores": [
+      {
+        "titulo": "Introducción a Estructuras",
+        "subtitulo": "Conceptos fundamentales sobre listas, pilas, colas y árboles",
+        "tipo": "bienvenida"
+      },
+      {
+        "titulo": "Implementaciones Prácticas",
+        "subtitulo": "Codificación de diferentes estructuras de datos desde cero",
+        "tipo": "detalleCursada",
+        "hijos": [
+          {
+            "titulo": "Lista Enlazada",
+            "subtitulo": "Implementación completa con métodos CRUD",
+            "tipo": "subNivel"
+          },
+          {
+            "titulo": "Pila (Stack)",
+            "subtitulo": "Estructura LIFO con operaciones push/pop",
+            "tipo": "subNivel"
+          },
+          {
+            "titulo": "Cola (Queue)",
+            "subtitulo": "Estructura FIFO con enqueue/dequeue",
+            "tipo": "subNivel"
+          },
+          {
+            "titulo": "Árbol Binario",
+            "subtitulo": "Navegación y búsqueda en árboles",
+            "tipo": "subNivel"
+          }
+        ]
+      },
+      {
+        "titulo": "Referencias y Herramientas",
+        "subtitulo": "",
+        "tipo": "canalDeComunicacion",
+        "hijos": [
+          {
+            "titulo": "Visualizador de Algoritmos",
+            "subtitulo": "visualgo.net",
+            "tipo": "subNivel"
+          },
+          {
+            "titulo": "GeeksforGeeks",
+            "subtitulo": "geeksforgeeks.org/data-structures",
+            "tipo": "subNivel"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "titulo": "Material de Base de Datos",
+    "materiaId": 1,
+    "contenedores": [
+      {
+        "titulo": "Fundamentos SQL",
+        "subtitulo": "Aprende los conceptos básicos de bases de datos relacionales y SQL",
+        "tipo": "bienvenida"
+      },
+      {
+        "titulo": "Consultas y Manipulación",
+        "subtitulo": "Ejercicios prácticos con SELECT, INSERT, UPDATE, DELETE y JOINs",
+        "tipo": "detalleCursada",
+        "hijos": [
+          {
+            "titulo": "Consultas SELECT Básicas",
+            "subtitulo": "WHERE, ORDER BY, GROUP BY, HAVING",
+            "tipo": "subNivel"
+          },
+          {
+            "titulo": "JOINs y Relaciones",
+            "subtitulo": "INNER, LEFT, RIGHT, FULL OUTER JOIN",
+            "tipo": "subNivel"
+          },
+          {
+            "titulo": "Funciones Agregadas",
+            "subtitulo": "COUNT, SUM, AVG, MIN, MAX",
+            "tipo": "subNivel"
+          },
+          {
+            "titulo": "Subconsultas",
+            "subtitulo": "Consultas anidadas y correlacionadas",
+            "tipo": "subNivel"
+          }
+        ]
+      },
+      {
+        "titulo": "Herramientas y Práctica",
+        "subtitulo": "",
+        "tipo": "canalDeComunicacion",
+        "hijos": [
+          {
+            "titulo": "MySQL Workbench",
+            "subtitulo": "mysql.com/products/workbench",
+            "tipo": "subNivel"
+          },
+          {
+            "titulo": "SQLite Browser",
+            "subtitulo": "sqlitebrowser.org",
+            "tipo": "subNivel"
+          },
+          {
+            "titulo": "W3Schools SQL",
+            "subtitulo": "w3schools.com/sql",
+            "tipo": "subNivel"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "titulo": "Material de Desarrollo Web Frontend",
+    "materiaId": 1,
+    "contenedores": [
+      {
+        "titulo": "Introducción al Frontend",
+        "subtitulo": "HTML5, CSS3 y JavaScript moderno para crear interfaces atractivas",
+        "tipo": "bienvenida"
+      },
+      {
+        "titulo": "Proyectos Prácticos",
+        "subtitulo": "Desarrollo paso a paso de aplicaciones web interactivas",
+        "tipo": "detalleCursada",
+        "hijos": [
+          {
+            "titulo": "Landing Page Responsiva",
+            "subtitulo": "HTML semántico y CSS Grid/Flexbox",
+            "tipo": "subNivel"
+          },
+          {
+            "titulo": "Calculadora JavaScript",
+            "subtitulo": "Manipulación del DOM y eventos",
+            "tipo": "subNivel"
+          },
+          {
+            "titulo": "To-Do List App",
+            "subtitulo": "LocalStorage y gestión de estado",
+            "tipo": "subNivel"
+          },
+          {
+            "titulo": "API Weather App",
+            "subtitulo": "Fetch API y manejo asíncrono",
+            "tipo": "subNivel"
+          }
+        ]
+      },
+      {
+        "titulo": "Recursos y Frameworks",
+        "subtitulo": "",
+        "tipo": "canalDeComunicacion",
+        "hijos": [
+          {
+            "titulo": "MDN Web Docs",
+            "subtitulo": "developer.mozilla.org",
+            "tipo": "subNivel"
+          },
+          {
+            "titulo": "Bootstrap Documentation",
+            "subtitulo": "getbootstrap.com/docs",
+            "tipo": "subNivel"
+          },
+          {
+            "titulo": "CSS Grid Garden",
+            "subtitulo": "cssgridgarden.com",
+            "tipo": "subNivel"
+          },
+          {
+            "titulo": "JavaScript30",
+            "subtitulo": "javascript30.com",
+            "tipo": "subNivel"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "titulo": "Material de Algoritmos y Complejidad",
+    "materiaId": 1,
+    "contenedores": [
+      {
+        "titulo": "Análisis de Algoritmos",
+        "subtitulo": "Comprende la eficiencia temporal y espacial de los algoritmos",
+        "tipo": "bienvenida"
+      },
+      {
+        "titulo": "Algoritmos Fundamentales",
+        "subtitulo": "Implementación y análisis de algoritmos clásicos",
+        "tipo": "detalleCursada",
+        "hijos": [
+          {
+            "titulo": "Algoritmos de Ordenamiento",
+            "subtitulo": "Bubble, Selection, Insertion, Merge, Quick Sort",
+            "tipo": "subNivel"
+          },
+          {
+            "titulo": "Algoritmos de Búsqueda",
+            "subtitulo": "Búsqueda lineal, binaria y en árboles",
+            "tipo": "subNivel"
+          },
+          {
+            "titulo": "Algoritmos Recursivos",
+            "subtitulo": "Fibonacci, factorial, torres de Hanoi",
+            "tipo": "subNivel"
+          },
+          {
+            "titulo": "Algoritmos Greedy",
+            "subtitulo": "Problemas de optimización local",
+            "tipo": "subNivel"
+          },
+          {
+            "titulo": "Programación Dinámica",
+            "subtitulo": "Memoización y optimización de subproblemas",
+            "tipo": "subNivel"
+          }
+        ]
+      },
+      {
+        "titulo": "Herramientas de Análisis",
+        "subtitulo": "",
+        "tipo": "canalDeComunicacion",
+        "hijos": [
+          {
+            "titulo": "Big-O Cheat Sheet",
+            "subtitulo": "bigocheatsheet.com",
+            "tipo": "subNivel"
+          },
+          {
+            "titulo": "Algorithm Visualizer",
+            "subtitulo": "algorithm-visualizer.org",
+            "tipo": "subNivel"
+          },
+          {
+            "titulo": "LeetCode Practice",
+            "subtitulo": "leetcode.com/problemset",
+            "tipo": "subNivel"
+          }
+        ]
+      }
+    ]
+  }
+]

@@ -1,0 +1,23 @@
+# Configuracion de la base de datos
+DATABASE_HOST=localhost
+DATABASE_PORT=5432
+DATABASE_NAME=proyecto_materias
+DATABASE_USER=admin
+DATABASE_PASSWORD=admin123
+# El esquema de la base se crea y actualiza con migraciones.
+# En produccion, start:prod ejecuta migration:run:prod antes de iniciar la API.
+
+# Puerto de la aplicacion
+PORT=3000
+
+# Auth.js
+AUTH_SECRET=change-this-secret-to-at-least-32-characters
+AUTH_GITHUB_ID=your-github-oauth-client-id
+AUTH_GITHUB_SECRET=your-github-oauth-client-secret
+AUTH_ADMIN_EMAILS=
+AUTH_RATE_LIMIT_TTL_MS=60000
+AUTH_RATE_LIMIT_MAX=120
+RATE_LIMIT_TTL_MS=60000
+RATE_LIMIT_MAX=120
+FRONTEND_URL=http://localhost:3001/materias
+FRONTEND_ORIGIN=http://localhost:3001

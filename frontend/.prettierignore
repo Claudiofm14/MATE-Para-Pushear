@@ -1,0 +1,30 @@
+# Dependencies
+node_modules/
+
+# Production builds
+build/
+dist/
+
+# Package files
+package-lock.json
+yarn.lock
+
+# Environment files
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Cache directories
+.cache/
+.parcel-cache/
+
+# Other
+*.log
+*.tgz
+*.tar.gz
+
+# Auto-generated files
+public/manifest.json
+public/robots.txt

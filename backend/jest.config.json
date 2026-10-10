@@ -1,0 +1,25 @@
+{
+  "moduleFileExtensions": ["js", "json", "ts"],
+  "rootDir": "src",
+  "testRegex": ".*\\.spec\\.ts$",
+  "transform": {
+    "^.+\\.(t|j)s$": "ts-jest"
+  },
+  "moduleNameMapper": {
+    "^src/(.*)$": "<rootDir>/$1",
+    "^@auth/core$": "<rootDir>/test/mocks/auth-core.ts",
+    "^read-excel-file/node$": "<rootDir>/test/mocks/read-excel-file-node.ts"
+  },
+  "collectCoverageFrom": [
+    "auth/constants/roles.constant.ts",
+    "auth/decorators/*.ts",
+    "modules/usuario/usuario.controller.ts",
+    "modules/actividad/actividad.service.ts",
+    "modules/semana/semana.service.ts",
+    "modules/materia-log/audit.interceptor.ts",
+    "utils/html-sanitizer.ts",
+    "test/helpers/*.ts"
+  ],
+  "coverageDirectory": "../coverage",
+  "testEnvironment": "node"
+}

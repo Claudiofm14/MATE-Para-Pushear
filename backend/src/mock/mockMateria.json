@@ -1,0 +1,26 @@
+[
+  {
+    "nombre": "Programación con Objetos 2",
+    "codigo": "POO2-2024-C1",
+    "descripcion": "Materia avanzada de programación orientada a objetos, continuación de POO1",
+    "cuatrimestre": 1,
+    "anio": 2024,
+    "activa": true
+  },
+  {
+    "nombre": "Matemática Avanzada",
+    "codigo": "MAT-ADV-2024-C1",
+    "descripcion": "Álgebra lineal y cálculo avanzado",
+    "cuatrimestre": 1,
+    "anio": 2024,
+    "activa": true
+  },
+  {
+    "nombre": "Programación Concurrente",
+    "codigo": "CONC-2024-C2",
+    "descripcion": "Programación paralela y concurrente",
+    "cuatrimestre": 2,
+    "anio": 2024,
+    "activa": true
+  }
+]

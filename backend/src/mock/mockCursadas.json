@@ -1,0 +1,492 @@
+[
+  {
+    "titulo": "Cursada 2025 - Primer Cuatrimestre",
+    "descripcion": "Cursada correspondiente al primer cuatrimestre del año 2025 de Programación con Objetos 2",
+    "materiaId": 1,
+    "comisiones": [
+      {
+        "nombre": "Comisión A - Lunes y Miércoles",
+        "descripcion": "Comisión presencial los días lunes y miércoles de 18:00 a 20:00hs en Aula 305"
+      },
+      {
+        "nombre": "Comisión B - Martes y Jueves",
+        "descripcion": "Comisión presencial los días martes y jueves de 19:00 a 21:00hs en Aula 402"
+      },
+      {
+        "nombre": "Comisión C - Virtual",
+        "descripcion": "Comisión 100% virtual los días miércoles y viernes de 20:00 a 22:00hs"
+      }
+    ],
+    "semanas": [
+      {
+        "titulo": "Semana 1 - Introducción a POO",
+        "descripcion": "En esta primera semana revisaremos los conceptos fundamentales de la programación orientada a objetos: clases, objetos, encapsulamiento y abstracción.",
+        "importante": "Es fundamental asistir a la primera clase para entender la metodología de trabajo del cuatrimestre.",
+        "avisos": "La clase práctica del miércoles requiere que traigan notebook con el entorno configurado.",
+        "comisionIds": [1, 2, 3],
+        "videos": [
+          {
+            "titulo": "Introducción a la Programación Orientada a Objetos",
+            "url": "https://www.youtube.com/watch?v=Z0yLerU0g-Q"
+          },
+          {
+            "titulo": "Clases y Objetos - Conceptos Básicos",
+            "url": "https://www.youtube.com/watch?v=DlphYPc_HKk"
+          },
+          {
+            "titulo": "Encapsulamiento y Abstracción",
+            "url": "https://www.youtube.com/watch?v=M8YwuY_si7E"
+          }
+        ],
+        "ejercicios": [
+          {
+            "titulo": "Ejercicio 1 - Primera Clase",
+            "descripcion": "Crear una clase Persona con atributos nombre, edad y DNI. Implementar métodos getters y setters.",
+            "url": "http://gitea-unahur.duckdns.org/poo2-unahur/ejercicio1-primera-clase"
+          },
+          {
+            "titulo": "Ejercicio 2 - Cuenta Bancaria",
+            "descripcion": "Modelar una cuenta bancaria con operaciones de depósito, extracción y consulta de saldo.",
+            "url": "http://gitea-unahur.duckdns.org/poo2-unahur/ejercicio2-cuenta-bancaria"
+          }
+        ],
+        "horarios": [
+          {
+            "titulo": "Clase Teórica",
+            "tipo": "presencial",
+            "detalle": "Lunes 18:00 a 20:00 - Aula 305 - Exposición de conceptos teóricos"
+          },
+          {
+            "titulo": "Clase Práctica",
+            "tipo": "presencial",
+            "detalle": "Miércoles 18:00 a 20:00 - Laboratorio 2 - Ejercitación guiada"
+          }
+        ]
+      },
+      {
+        "titulo": "Semana 2 - Herencia y Polimorfismo",
+        "descripcion": "Profundizaremos en dos pilares fundamentales de POO: herencia y polimorfismo. Veremos cómo reutilizar código y crear jerarquías de clases.",
+        "importante": "Esta semana habrá un checkpoint evaluatorio el viernes. Repasar los ejercicios de la semana 1.",
+        "avisos": null,
+        "comisionIds": [1, 2, 3],
+        "videos": [
+          {
+            "titulo": "Herencia en Java - Parte 1",
+            "url": "https://www.youtube.com/watch?v=kaIqlDoaRTE"
+          },
+          {
+            "titulo": "Polimorfismo y Sobrecarga",
+            "url": "https://www.youtube.com/watch?v=jhDUxynEQRI"
+          },
+          {
+            "titulo": "Clases Abstractas e Interfaces",
+            "url": "https://www.youtube.com/watch?v=AU07jJc_qMQ"
+          }
+        ],
+        "ejercicios": [
+          {
+            "titulo": "Ejercicio 3 - Jerarquía de Empleados",
+            "descripcion": "Crear una jerarquía de clases para modelar diferentes tipos de empleados: empleado permanente, temporal y por proyecto.",
+            "url": "http://gitea-unahur.duckdns.org/poo2-unahur/ejercicio3-empleados"
+          },
+          {
+            "titulo": "Ejercicio 4 - Figuras Geométricas",
+            "descripcion": "Implementar una jerarquía de figuras geométricas con cálculo de área y perímetro usando polimorfismo.",
+            "url": "http://gitea-unahur.duckdns.org/poo2-unahur/ejercicio4-figuras"
+          },
+          {
+            "titulo": "Ejercicio 5 - Sistema de Pagos",
+            "descripcion": "Diseñar un sistema de pagos que soporte diferentes métodos: efectivo, tarjeta de crédito, transferencia.",
+            "url": "http://gitea-unahur.duckdns.org/poo2-unahur/ejercicio5-pagos"
+          }
+        ],
+        "horarios": [
+          {
+            "titulo": "Clase Teórica",
+            "tipo": "presencial",
+            "detalle": "Lunes 18:00 a 20:00 - Aula 305"
+          },
+          {
+            "titulo": "Clase Práctica",
+            "tipo": "presencial",
+            "detalle": "Miércoles 18:00 a 20:00 - Laboratorio 2"
+          },
+          {
+            "titulo": "Checkpoint Evaluatorio",
+            "tipo": "presencial",
+            "detalle": "Viernes 18:00 a 19:00 - Aula 305 - Evaluación de ejercicios semana 1 y 2"
+          }
+        ]
+      },
+      {
+        "titulo": "Semana 3 - Colecciones y Estructuras de Datos",
+        "descripcion": "Aprenderemos a trabajar con colecciones en Java: listas, conjuntos, mapas y sus diferentes implementaciones.",
+        "importante": null,
+        "avisos": "La comisión C (virtual) tendrá clase asincrónica el miércoles. El material estará disponible en el campus.",
+        "comisionIds": [1, 2],
+        "videos": [
+          {
+            "titulo": "Colecciones en Java - ArrayList",
+            "url": "https://www.youtube.com/watch?v=NbYgm0r7u6o"
+          },
+          {
+            "titulo": "HashMap y HashSet",
+            "url": "https://www.youtube.com/watch?v=H62Jfv1DJlU"
+          },
+          {
+            "titulo": "Iteradores y Streams",
+            "url": "https://www.youtube.com/watch?v=t1-YZ6bF-g0"
+          }
+        ],
+        "ejercicios": [
+          {
+            "titulo": "Ejercicio 6 - Agenda de Contactos",
+            "descripcion": "Implementar una agenda de contactos usando HashMap para almacenar personas por DNI.",
+            "url": "http://gitea-unahur.duckdns.org/poo2-unahur/ejercicio6-agenda"
+          },
+          {
+            "titulo": "Ejercicio 7 - Sistema de Inscripciones",
+            "descripcion": "Crear un sistema que gestione inscripciones de estudiantes a materias usando colecciones apropiadas.",
+            "url": "http://gitea-unahur.duckdns.org/poo2-unahur/ejercicio7-inscripciones"
+          }
+        ],
+        "horarios": [
+          {
+            "titulo": "Clase Teórica",
+            "tipo": "presencial",
+            "detalle": "Lunes 18:00 a 20:00 - Aula 305"
+          },
+          {
+            "titulo": "Clase Práctica - Comisión A y B",
+            "tipo": "presencial",
+            "detalle": "Miércoles 18:00 a 20:00 - Laboratorio 2"
+          },
+          {
+            "titulo": "Clase Asincrónica - Comisión C",
+            "tipo": "virtual",
+            "detalle": "Material disponible en campus virtual",
+            "url": "https://campus.unahur.edu.ar/poo2/semana3"
+          }
+        ]
+      },
+      {
+        "titulo": "Semana 4 - Excepciones y Manejo de Errores",
+        "descripcion": "Estudiaremos el sistema de excepciones de Java y las mejores prácticas para el manejo de errores en aplicaciones orientadas a objetos.",
+        "importante": "Revisión de la entrega parcial 1. Los grupos deben tener el 50% del trabajo completado.",
+        "avisos": null,
+        "comisionIds": [1, 2, 3],
+        "videos": [
+          {
+            "titulo": "Excepciones en Java - Try Catch Finally",
+            "url": "https://www.youtube.com/watch?v=EWj60p8esD0"
+          },
+          {
+            "titulo": "Excepciones Personalizadas",
+            "url": "https://www.youtube.com/watch?v=1XAfapkBQjk"
+          },
+          {
+            "titulo": "Mejores Prácticas en Manejo de Errores",
+            "url": "https://www.youtube.com/watch?v=jafIlccPdqQ"
+          }
+        ],
+        "ejercicios": [
+          {
+            "titulo": "Ejercicio 8 - Validación de Datos",
+            "descripcion": "Implementar validaciones con excepciones personalizadas para un sistema de registro de usuarios.",
+            "url": "http://gitea-unahur.duckdns.org/poo2-unahur/ejercicio8-validaciones"
+          },
+          {
+            "titulo": "Ejercicio 9 - Calculadora Robusta",
+            "descripcion": "Crear una calculadora que maneje correctamente errores de división por cero y operaciones inválidas.",
+            "url": "http://gitea-unahur.duckdns.org/poo2-unahur/ejercicio9-calculadora"
+          }
+        ],
+        "horarios": [
+          {
+            "titulo": "Clase Teórica",
+            "tipo": "presencial",
+            "detalle": "Lunes 18:00 a 20:00 - Aula 305"
+          },
+          {
+            "titulo": "Clase Práctica",
+            "tipo": "presencial",
+            "detalle": "Miércoles 18:00 a 20:00 - Laboratorio 2"
+          },
+          {
+            "titulo": "Consulta de Proyecto",
+            "tipo": "virtual",
+            "detalle": "Viernes 19:00 a 20:00 - Consultas sobre entrega parcial 1",
+            "url": "https://meet.google.com/poo-consulta-001"
+          }
+        ]
+      },
+      {
+        "titulo": "Semana 5 - Testing y TDD",
+        "descripcion": "Introducción al desarrollo guiado por pruebas (TDD) y testing unitario con JUnit 5.",
+        "importante": "Entrega Parcial 1 el viernes hasta las 23:59hs. Subir al repositorio de Gitea.",
+        "avisos": "No habrá clase práctica presencial el miércoles. Dedicar el tiempo a finalizar la entrega.",
+        "comisionIds": [1, 2, 3],
+        "videos": [
+          {
+            "titulo": "Introducción a JUnit 5",
+            "url": "https://www.youtube.com/watch?v=vZm0lHciFsQ"
+          },
+          {
+            "titulo": "Test Driven Development - TDD",
+            "url": "https://www.youtube.com/watch?v=QCif_-r8eK4"
+          },
+          {
+            "titulo": "Mockito - Testing con Objetos Simulados",
+            "url": "https://www.youtube.com/watch?v=DJDBl0vURD4"
+          }
+        ],
+        "ejercicios": [
+          {
+            "titulo": "Ejercicio 10 - Tests para Cuenta Bancaria",
+            "descripcion": "Escribir tests unitarios completos para la clase CuentaBancaria usando JUnit.",
+            "url": "http://gitea-unahur.duckdns.org/poo2-unahur/ejercicio10-tests-cuenta"
+          },
+          {
+            "titulo": "Ejercicio 11 - TDD Carrito de Compras",
+            "descripcion": "Implementar un carrito de compras siguiendo la metodología TDD desde cero.",
+            "url": "http://gitea-unahur.duckdns.org/poo2-unahur/ejercicio11-tdd-carrito"
+          }
+        ],
+        "horarios": [
+          {
+            "titulo": "Clase Teórica - Testing",
+            "tipo": "presencial",
+            "detalle": "Lunes 18:00 a 20:00 - Aula 305"
+          },
+          {
+            "titulo": "Consultas Virtuales",
+            "tipo": "virtual",
+            "detalle": "Miércoles 18:00 a 20:00 - Consultas sobre la entrega",
+            "url": "https://meet.google.com/poo-consulta-002"
+          }
+        ]
+      },
+      {
+        "titulo": "Semana 6 - Patrones de Diseño I - Creacionales",
+        "descripcion": "Estudiaremos los patrones de diseño creacionales: Singleton, Factory, Abstract Factory y Builder.",
+        "importante": "Corrección de la Entrega Parcial 1 disponible. Revisar feedback en Gitea.",
+        "avisos": null,
+        "comisionIds": [1, 2, 3],
+        "videos": [
+          {
+            "titulo": "Patrón Singleton",
+            "url": "https://www.youtube.com/watch?v=hUE_j6q0LTQ"
+          },
+          {
+            "titulo": "Factory Pattern",
+            "url": "https://www.youtube.com/watch?v=EcFVTgRHJLM"
+          },
+          {
+            "titulo": "Builder Pattern",
+            "url": "https://www.youtube.com/watch?v=9XnsOpaoLaY"
+          }
+        ],
+        "ejercicios": [
+          {
+            "titulo": "Ejercicio 12 - Configuración Singleton",
+            "descripcion": "Implementar un gestor de configuración usando el patrón Singleton.",
+            "url": "http://gitea-unahur.duckdns.org/poo2-unahur/ejercicio12-singleton"
+          },
+          {
+            "titulo": "Ejercicio 13 - Factory de Vehículos",
+            "descripcion": "Crear una fábrica de vehículos usando Factory Pattern para diferentes tipos de transporte.",
+            "url": "http://gitea-unahur.duckdns.org/poo2-unahur/ejercicio13-factory"
+          },
+          {
+            "titulo": "Ejercicio 14 - Builder de Pizzas",
+            "descripcion": "Implementar un constructor de pizzas personalizadas usando el patrón Builder.",
+            "url": "http://gitea-unahur.duckdns.org/poo2-unahur/ejercicio14-builder"
+          }
+        ],
+        "horarios": [
+          {
+            "titulo": "Clase Teórica",
+            "tipo": "presencial",
+            "detalle": "Lunes 18:00 a 20:00 - Aula 305"
+          },
+          {
+            "titulo": "Clase Práctica",
+            "tipo": "presencial",
+            "detalle": "Miércoles 18:00 a 20:00 - Laboratorio 2"
+          }
+        ]
+      },
+      {
+        "titulo": "Semana 7 - Patrones de Diseño II - Estructurales",
+        "descripcion": "Veremos patrones estructurales: Adapter, Decorator, Composite y Facade.",
+        "importante": null,
+        "avisos": null,
+        "comisionIds": [1, 2, 3],
+        "videos": [
+          {
+            "titulo": "Adapter Pattern",
+            "url": "https://www.youtube.com/watch?v=2PKQtcJjYvc"
+          },
+          {
+            "titulo": "Decorator Pattern",
+            "url": "https://www.youtube.com/watch?v=GCraGHx6gso"
+          },
+          {
+            "titulo": "Facade Pattern",
+            "url": "https://www.youtube.com/watch?v=K4FkHVO5iac"
+          }
+        ],
+        "ejercicios": [
+          {
+            "titulo": "Ejercicio 15 - Adapter de APIs",
+            "descripcion": "Implementar un adaptador para integrar diferentes APIs de pagos con interfaces incompatibles.",
+            "url": "http://gitea-unahur.duckdns.org/poo2-unahur/ejercicio15-adapter"
+          },
+          {
+            "titulo": "Ejercicio 16 - Decorator de Notificaciones",
+            "descripcion": "Crear un sistema de notificaciones decorables (email, SMS, push) usando Decorator.",
+            "url": "http://gitea-unahur.duckdns.org/poo2-unahur/ejercicio16-decorator"
+          }
+        ],
+        "horarios": [
+          {
+            "titulo": "Clase Teórica",
+            "tipo": "presencial",
+            "detalle": "Lunes 18:00 a 20:00 - Aula 305"
+          },
+          {
+            "titulo": "Clase Práctica",
+            "tipo": "presencial",
+            "detalle": "Miércoles 18:00 a 20:00 - Laboratorio 2"
+          }
+        ]
+      },
+      {
+        "titulo": "Semana 8 - Patrones de Diseño III - Comportamiento",
+        "descripcion": "Estudiaremos patrones de comportamiento: Observer, Strategy, Command y Template Method.",
+        "importante": "Publicación del enunciado de la Entrega Final. Leer con atención y formar grupos.",
+        "avisos": "La clase del miércoles será virtual para todas las comisiones debido a un paro de transporte.",
+        "comisionIds": [1, 2, 3],
+        "videos": [
+          {
+            "titulo": "Observer Pattern",
+            "url": "https://www.youtube.com/watch?v=_BpmfnqjgzQ"
+          },
+          {
+            "titulo": "Strategy Pattern",
+            "url": "https://www.youtube.com/watch?v=v9ejT8FO-7I"
+          },
+          {
+            "titulo": "Command Pattern",
+            "url": "https://www.youtube.com/watch?v=9qA5kw8dcSU"
+          }
+        ],
+        "ejercicios": [
+          {
+            "titulo": "Ejercicio 17 - Observer en Sistema de Stock",
+            "descripcion": "Implementar un sistema de alertas de stock usando el patrón Observer.",
+            "url": "http://gitea-unahur.duckdns.org/poo2-unahur/ejercicio17-observer"
+          },
+          {
+            "titulo": "Ejercicio 18 - Strategy de Descuentos",
+            "descripcion": "Crear diferentes estrategias de descuento para un sistema de ventas.",
+            "url": "http://gitea-unahur.duckdns.org/poo2-unahur/ejercicio18-strategy"
+          }
+        ],
+        "horarios": [
+          {
+            "titulo": "Clase Teórica",
+            "tipo": "presencial",
+            "detalle": "Lunes 18:00 a 20:00 - Aula 305"
+          },
+          {
+            "titulo": "Clase Virtual - Todas las Comisiones",
+            "tipo": "virtual",
+            "detalle": "Miércoles 18:00 a 20:00 - Clase sincrónica por Meet",
+            "url": "https://meet.google.com/poo-clase-semana8"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "titulo": "Cursada 2025 - Segundo Cuatrimestre",
+    "descripcion": "Cursada correspondiente al segundo cuatrimestre del año 2025 de Programación Concurrente",
+    "materiaId": 2,
+    "comisiones": [
+      {
+        "nombre": "Comisión Única - Lunes",
+        "descripcion": "Comisión presencial los días lunes de 14:00 a 18:00hs en Laboratorio 3"
+      }
+    ],
+    "semanas": [
+      {
+        "titulo": "Semana 1 - Introducción a Concurrencia",
+        "descripcion": "Conceptos básicos de programación concurrente y paralela. Diferencias entre procesos e hilos.",
+        "importante": "Es obligatoria la asistencia a la primera clase.",
+        "avisos": null,
+        "comisionIds": [1],
+        "videos": [
+          {
+            "titulo": "Introducción a la Programación Concurrente",
+            "url": "https://www.youtube.com/watch?v=iKtvNJQoCNw"
+          },
+          {
+            "titulo": "Procesos vs Hilos",
+            "url": "https://www.youtube.com/watch?v=exbKr6fnoUw"
+          }
+        ],
+        "ejercicios": [
+          {
+            "titulo": "Ejercicio 1 - Primer Thread",
+            "descripcion": "Crear y ejecutar threads básicos en Java usando Thread y Runnable.",
+            "url": "http://gitea-unahur.duckdns.org/concurrente-unahur/ejercicio1-threads"
+          }
+        ],
+        "horarios": [
+          {
+            "titulo": "Clase Teórico-Práctica",
+            "tipo": "presencial",
+            "detalle": "Lunes 14:00 a 18:00 - Laboratorio 3"
+          }
+        ]
+      },
+      {
+        "titulo": "Semana 2 - Sincronización y Mutex",
+        "descripcion": "Mecanismos de sincronización: locks, semáforos y monitores. Problemas de concurrencia.",
+        "importante": null,
+        "avisos": null,
+        "comisionIds": [1],
+        "videos": [
+          {
+            "titulo": "Sincronización en Java",
+            "url": "https://www.youtube.com/watch?v=RH7G-N2pa8M"
+          },
+          {
+            "titulo": "Problema del Productor-Consumidor",
+            "url": "https://www.youtube.com/watch?v=l6zkaJFjUbM"
+          }
+        ],
+        "ejercicios": [
+          {
+            "titulo": "Ejercicio 2 - Cuenta Bancaria Concurrente",
+            "descripcion": "Implementar una cuenta bancaria thread-safe usando sincronización.",
+            "url": "http://gitea-unahur.duckdns.org/concurrente-unahur/ejercicio2-sincronizacion"
+          },
+          {
+            "titulo": "Ejercicio 3 - Productor Consumidor",
+            "descripcion": "Resolver el problema clásico del productor-consumidor.",
+            "url": "http://gitea-unahur.duckdns.org/concurrente-unahur/ejercicio3-prod-cons"
+          }
+        ],
+        "horarios": [
+          {
+            "titulo": "Clase Teórico-Práctica",
+            "tipo": "presencial",
+            "detalle": "Lunes 14:00 a 18:00 - Laboratorio 3"
+          }
+        ]
+      }
+    ]
+  }
+]

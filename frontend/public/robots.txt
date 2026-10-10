@@ -1,0 +1,10 @@
+# Robots.txt para Materiales Tecnológicos - UNAHUR
+
+User-agent: *
+Allow: /
+
+Disallow: /static/
+Disallow: /*.json$
+Disallow: /*.map$
+
+Sitemap: https://mate.unahur.edu.ar/sitemap.xml

@@ -1,0 +1,191 @@
+[
+  {
+    "titulo": "Programación con Objetos 2",
+    "materiaId": 1,
+    "contenedores": [
+      {
+        "titulo": "Bienvenidos a Programación Orientada a Objetos II",
+        "subtitulo": "Les damos la bienvenida a este cuatrimestre en la materia",
+        "tipo": "bienvenida"
+      },
+      {
+        "titulo": "Detalles de la Cursada",
+        "subtitulo": "La materia será combinada es decir una semana presencial y una semana virtual, alternando. Además habrá clase de consulta virtual los dias sabados para todas las comisiones",
+        "tipo": "detalleCursada",
+        "hijos": [
+          {
+            "titulo": "Comision 1 - Viernes",
+            "subtitulo": "Profesor Gerardo G.",
+            "tipo": "subNivel"
+          },
+          {
+            "titulo": "Comision 2 - Miercoles",
+            "subtitulo": "Profesor Hernan C.",
+            "tipo": "subNivel"
+          },
+          {
+            "titulo": "Comision 3 - Viernes",
+            "subtitulo": "Profesor Dario M.",
+            "tipo": "subNivel"
+          },
+          {
+            "titulo": "Comision 4 - Miercoles",
+            "subtitulo": "Profesor Mauricio P.",
+            "tipo": "subNivel"
+          }
+        ]
+      },
+      {
+        "titulo": "Canales de Comunicación",
+        "subtitulo": "",
+        "tipo": "canalDeComunicacion",
+        "hijos": [
+          {
+            "titulo": "Discord",
+            "subtitulo": "www.discord.com",
+            "tipo": "subNivel"
+          },
+          {
+            "titulo": "Grupo de Whatsapp",
+            "subtitulo": "web.whatsapp.com",
+            "tipo": "subNivel"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "titulo": "Matemática Avanzada",
+    "materiaId": 1,
+    "contenedores": [
+      {
+        "titulo": "Bienvenida a Matemática Avanzada",
+        "subtitulo": "Nos alegra recibirlos en este nuevo cuatrimestre",
+        "tipo": "bienvenida"
+      },
+      {
+        "titulo": "Detalles de la Cursada",
+        "subtitulo": "Las clases serán virtuales los lunes y miércoles, con consultas presenciales los viernes.",
+        "tipo": "detalleCursada",
+        "hijos": [
+          {
+            "titulo": "Comision 1 - Lunes",
+            "subtitulo": "Profesor Alicia R.",
+            "tipo": "subNivel"
+          },
+          {
+            "titulo": "Comision 2 - Miércoles",
+            "subtitulo": "Profesor Bruno F.",
+            "tipo": "subNivel"
+          }
+        ]
+      },
+      {
+        "titulo": "Canales de Comunicación",
+        "subtitulo": "",
+        "tipo": "canalDeComunicacion",
+        "hijos": [
+          {
+            "titulo": "Teams",
+            "subtitulo": "teams.microsoft.com",
+            "tipo": "subNivel"
+          },
+          {
+            "titulo": "Slack",
+            "subtitulo": "slack.com/matematica",
+            "tipo": "subNivel"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "titulo": "Historia del Arte",
+    "materiaId": 1,
+    "contenedores": [
+      {
+        "titulo": "Bienvenidos a Historia del Arte",
+        "subtitulo": "Exploraremos juntos las grandes épocas y movimientos artísticos",
+        "tipo": "bienvenida"
+      },
+      {
+        "titulo": "Detalles de la Cursada",
+        "subtitulo": "Clases presenciales los martes y jueves. Cada semana habrá un seminario práctico online.",
+        "tipo": "detalleCursada",
+        "hijos": [
+          {
+            "titulo": "Comision 1 - Martes",
+            "subtitulo": "Profesora Laura M.",
+            "tipo": "subNivel"
+          },
+          {
+            "titulo": "Comision 2 - Jueves",
+            "subtitulo": "Profesor Juan P.",
+            "tipo": "subNivel"
+          }
+        ]
+      },
+      {
+        "titulo": "Canales de Comunicación",
+        "subtitulo": "",
+        "tipo": "canalDeComunicacion",
+        "hijos": [
+          {
+            "titulo": "Moodle",
+            "subtitulo": "moodle.universidad.edu",
+            "tipo": "subNivel"
+          },
+          {
+            "titulo": "Email",
+            "subtitulo": "historia.art@universidad.edu",
+            "tipo": "subNivel"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "titulo": "Programación Web",
+    "contenedores": [
+      {
+        "titulo": "Bienvenida a Programación Web",
+        "subtitulo": "Aprenderemos HTML, CSS y JavaScript con proyectos prácticos",
+        "tipo": "bienvenida"
+      },
+      {
+        "titulo": "Detalles de la Cursada",
+        "subtitulo": "Las clases serán mixtas: virtual los lunes y presenciales los jueves. Consultas online viernes a la tarde.",
+        "tipo": "detalleCursada",
+        "hijos": [
+          {
+            "titulo": "Comision 1 - Lunes",
+            "subtitulo": "Profesor Gabriel L.",
+            "tipo": "subNivel"
+          },
+          {
+            "titulo": "Comision 2 - Jueves",
+            "subtitulo": "Profesor Mariana C.",
+            "tipo": "subNivel"
+          }
+        ]
+      },
+      {
+        "titulo": "Canales de Comunicación",
+        "subtitulo": "",
+        "tipo": "canalDeComunicacion",
+        "hijos": [
+          {
+            "titulo": "Discord",
+            "subtitulo": "discord.gg/web",
+            "tipo": "subNivel"
+          },
+          {
+            "titulo": "Google Classroom",
+            "subtitulo": "classroom.google.com",
+            "tipo": "subNivel"
+          }
+        ]
+      }
+    ]
+  }
+]
