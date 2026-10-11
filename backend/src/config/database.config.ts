@@ -8,6 +8,7 @@ type PostgresConnectionOptions = {
   username?: string;
   password?: string;
   database?: string;
+  ssl?: boolean | object;
   extra?: {
     options: string;
     max: number;
@@ -90,6 +91,7 @@ export const getDatabaseConnectionOptions = (
     port: parseInt(process.env.DATABASE_PORT || '5432', 10),
     username: process.env.DATABASE_USER || 'admin',
     password: process.env.DATABASE_PASSWORD || 'admin123',
+    ssl: { rejectUnauthorized: false },
     database: process.env.DATABASE_NAME || 'proyecto_materias',
     extra: options.migrations
       ? {
