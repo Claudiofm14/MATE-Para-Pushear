@@ -13,6 +13,8 @@ import {
   ExerciseGroupMember,
   GroupExerciseRepository,
   Usuario,
+  AlumnoMateria,
+  ProfesorComision,
 } from '../../entities/index.entity';
 import {
   addRepoCollaborator,
@@ -20,6 +22,7 @@ import {
   generateRepoFromTemplate,
   getRepo,
   mapGiteaError,
+  normalizeGiteaSlug,
   removeRepoCollaborator,
 } from '../../lib/gitea';
 import { EjercicioService } from './ejercicio.service';
@@ -298,6 +301,41 @@ export class ExerciseGroupService {
       throw e;
     }
   }
+  private async resolveTeacherSuffix(
+    exercise: any,
+    studentIds: number[],
+  ): Promise<string | null> {
+    try {
+      if (!studentIds.length) return null;
+      const materiaId =
+        exercise?.semana?.cursada?.materia?.id ??
+        exercise?.semana?.cursada?.materiaId;
+      if (!materiaId) return null;
+      const alumnoRepo = this.dataSource.getRepository(AlumnoMateria);
+      const inscripciones = await alumnoRepo.find({
+        where: studentIds.map((alumnoId) => ({ alumnoId, materiaId })),
+      });
+      if (!inscripciones.length) return null;
+      const counts = new Map<number, number>();
+      for (const ins of inscripciones) {
+        if (ins.comisionId) counts.set(ins.comisionId, (counts.get(ins.comisionId) || 0) + 1);
+      }
+      if (!counts.size) return null;
+      const comisionId = [...counts.entries()].sort((a, b) => b[1] - a[1])[0][0];
+      const profesorRepo = this.dataSource.getRepository(ProfesorComision);
+      const asignacion = await profesorRepo.findOne({
+        where: { comisionId },
+        relations: ['profesorMateria', 'profesorMateria.profesor'],
+        order: { id: 'ASC' },
+      });
+      const docente = asignacion?.profesorMateria?.profesor;
+      const raw = (docente?.nombre || docente?.githubUser || '').trim();
+      return raw || null;
+    } catch (e) {
+      this.logger.warn(`No se pudo resolver docente de comision: ${e?.message || e}`);
+      return null;
+    }
+  }
   async ensureRepository(
     exerciseId: number,
     groupId: number,
@@ -325,7 +363,23 @@ export class ExerciseGroupService {
     const org = exercise.semana.cursada.giteaOrgName;
     if (!org || !exercise.giteaTemplateOwner || !exercise.giteaTemplateRepo)
       throw new BadRequestException('Falta configurar Gitea o la plantilla');
-    const name = `ejercicio-${exerciseId}-grupo-${groupId}`;
+    const fallback = `ejercicio-${exerciseId}-grupo-${groupId}`;
+    const legacyName = normalizeGiteaSlug(
+      `${exercise.titulo}-${group.name}`,
+      fallback,
+    ).slice(0, 100);
+    const teacherSuffix = await this.resolveTeacherSuffix(
+      exercise,
+      group.members.map((m) => m.studentId ?? m.student?.id).filter(Boolean),
+    );
+    const name = (
+      teacherSuffix
+        ? normalizeGiteaSlug(
+            `${exercise.titulo}-${group.name}-${teacherSuffix}`,
+            fallback,
+          )
+        : legacyName
+    ).slice(0, 100);
     let record = await this.groupRepos.findOne({
       where: { exerciseId, groupId },
     });
@@ -355,6 +409,7 @@ export class ExerciseGroupService {
     await this.groupRepos.save(record);
     try {
       let repo = await getRepo(org, name);
+      if (!repo && legacyName !== name) repo = await getRepo(org, legacyName);
       if (!repo)
         repo = await generateRepoFromTemplate({
           templateOwner: exercise.giteaTemplateOwner,
@@ -367,12 +422,14 @@ export class ExerciseGroupService {
         await ensureOrgMember(org, member.student.githubUser);
         await addRepoCollaborator(
           org,
-          name,
+          repo.name,
           member.student.githubUser,
           'write',
         );
       }
       record.giteaRepositoryId = String(repo.id || '');
+      record.repositoryOwner = org;
+      record.repositoryName = repo.name;
       record.repositoryUrl = repo.html_url || repo.link || '';
       record.syncStatus = 'ready';
       return await this.groupRepos.save(record);
