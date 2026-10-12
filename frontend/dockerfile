@@ -8,7 +8,7 @@ RUN npm ci --ignore-scripts --no-audit --no-fund
 
 COPY . .
 
-ARG VITE_API_URL=http://localhost:3000
+ARG VITE_API_URL=https://api.mate.unahur.edu.ar
 ENV VITE_API_URL=${VITE_API_URL}
 ENV VITE_ENVIRONMENT=production
 

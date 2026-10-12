@@ -46,7 +46,12 @@ export class EjercicioService {
   async findOne(id: number): Promise<Ejercicio> {
     const ejercicio = await this.ejercicioRepository.findOne({
       where: { id },
-      relations: ['semana', 'semana.cursada', 'semana.cursada.materia'],
+      relations: [
+        'semana',
+        'semana.cursada',
+        'semana.cursada.materia',
+        'createdBy',
+      ],
       withDeleted: true,
     });
 
@@ -64,7 +69,10 @@ export class EjercicioService {
     });
   }
 
-  async create(createEjercicioDto: CreateEjercicioDto): Promise<Ejercicio> {
+  async create(
+    createEjercicioDto: CreateEjercicioDto,
+    createdBy?: Usuario,
+  ): Promise<Ejercicio> {
     this.validateGroupConfiguration(createEjercicioDto);
     const semana = await this.semanaRepository.findOne({
       where: { id: createEjercicioDto.semanaId },
@@ -111,6 +119,7 @@ export class EjercicioService {
       fechaEntrega: createEjercicioDto.fechaEntrega
         ? this.normalizeDateOnly(createEjercicioDto.fechaEntrega)
         : undefined,
+      createdById: createdBy?.id ?? null,
       semana,
     });
     this.normalizeExerciseByType(ejercicio);

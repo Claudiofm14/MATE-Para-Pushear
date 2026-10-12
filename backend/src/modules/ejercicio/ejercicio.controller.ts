@@ -257,7 +257,7 @@ export class EjercicioController {
         throw new ForbiddenException('No tienes acceso a esta materia');
       }
     }
-    return this.ejercicioService.create(createEjercicioDto);
+    return this.ejercicioService.create(createEjercicioDto, user);
   }
 
   @ApiOperation({ summary: 'Actualizar un ejercicio' })

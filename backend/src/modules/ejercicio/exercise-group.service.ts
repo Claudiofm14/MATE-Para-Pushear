@@ -301,11 +301,48 @@ export class ExerciseGroupService {
       throw e;
     }
   }
+  buildGroupRepoName(
+    titulo: string,
+    groupName: string,
+    teacherSuffix: string | null,
+    fallback: string,
+  ): { name: string; legacyName: string } {
+    const legacyName = normalizeGiteaSlug(
+      `${titulo}-${groupName}`,
+      fallback,
+    ).slice(0, 100);
+    if (!teacherSuffix?.trim()) return { name: legacyName, legacyName };
+    const base = normalizeGiteaSlug(`${titulo}-${groupName}`, '');
+    const teacher = normalizeGiteaSlug(teacherSuffix, '');
+    if (!teacher) return { name: legacyName, legacyName };
+    if (!base) return { name: teacher.slice(0, 100), legacyName };
+    let name = `${base}-${teacher}`;
+    // normalizeGiteaSlug trunca a 80 caracteres: si titulo+grupo es largo,
+    // el docente quedaria recortado. Se recorta la base para preservar el
+    // sufijo del profesor completo (max 100).
+    if (name.length > 100) {
+      const keepBase = 100 - teacher.length - 1;
+      if (keepBase < 1) return { name: teacher.slice(0, 100), legacyName };
+      name = `${base.slice(0, keepBase).replace(/-+$/g, '')}-${teacher}`;
+    }
+    return { name, legacyName };
+  }
+  private teacherDisplayName(user: any): string {
+    const fullName = `${user?.nombre ?? ''} ${user?.apellido ?? ''}`
+      .trim()
+      .replace(/\s+/g, ' ');
+    return (fullName || user?.githubUser || '').trim();
+  }
   private async resolveTeacherSuffix(
     exercise: any,
     studentIds: number[],
   ): Promise<string | null> {
     try {
+      // Se prioriza al docente que creó el ejercicio.
+      const nombreCreador = this.teacherDisplayName(exercise?.createdBy);
+      if (nombreCreador) return nombreCreador;
+      // Fallback para ejercicios creados antes de registrar al docente creador:
+      // se usa el docente de la comisión mayoritaria del grupo.
       if (!studentIds.length) return null;
       const materiaId =
         exercise?.semana?.cursada?.materia?.id ??
@@ -313,15 +350,22 @@ export class ExerciseGroupService {
       if (!materiaId) return null;
       const alumnoRepo = this.dataSource.getRepository(AlumnoMateria);
       const inscripciones = await alumnoRepo.find({
-        where: studentIds.map((alumnoId) => ({ alumnoId, materiaId })),
+        where: studentIds.map((alumnoId) => ({
+          alumnoId,
+          materiaId,
+          estado: 'aprobado',
+        })) as any,
       });
       if (!inscripciones.length) return null;
       const counts = new Map<number, number>();
       for (const ins of inscripciones) {
-        if (ins.comisionId) counts.set(ins.comisionId, (counts.get(ins.comisionId) || 0) + 1);
+        if (ins.comisionId)
+          counts.set(ins.comisionId, (counts.get(ins.comisionId) || 0) + 1);
       }
       if (!counts.size) return null;
-      const comisionId = [...counts.entries()].sort((a, b) => b[1] - a[1])[0][0];
+      const comisionId = [...counts.entries()].sort(
+        (a, b) => b[1] - a[1],
+      )[0][0];
       const profesorRepo = this.dataSource.getRepository(ProfesorComision);
       const asignacion = await profesorRepo.findOne({
         where: { comisionId },
@@ -329,10 +373,11 @@ export class ExerciseGroupService {
         order: { id: 'ASC' },
       });
       const docente = asignacion?.profesorMateria?.profesor;
-      const raw = (docente?.nombre || docente?.githubUser || '').trim();
-      return raw || null;
+      return this.teacherDisplayName(docente) || null;
     } catch (e) {
-      this.logger.warn(`No se pudo resolver docente de comision: ${e?.message || e}`);
+      this.logger.warn(
+        `No se pudo resolver docente de comision: ${e?.message || e}`,
+      );
       return null;
     }
   }
@@ -364,22 +409,16 @@ export class ExerciseGroupService {
     if (!org || !exercise.giteaTemplateOwner || !exercise.giteaTemplateRepo)
       throw new BadRequestException('Falta configurar Gitea o la plantilla');
     const fallback = `ejercicio-${exerciseId}-grupo-${groupId}`;
-    const legacyName = normalizeGiteaSlug(
-      `${exercise.titulo}-${group.name}`,
-      fallback,
-    ).slice(0, 100);
     const teacherSuffix = await this.resolveTeacherSuffix(
       exercise,
       group.members.map((m) => m.studentId ?? m.student?.id).filter(Boolean),
     );
-    const name = (
-      teacherSuffix
-        ? normalizeGiteaSlug(
-            `${exercise.titulo}-${group.name}-${teacherSuffix}`,
-            fallback,
-          )
-        : legacyName
-    ).slice(0, 100);
+    const { name, legacyName } = this.buildGroupRepoName(
+      exercise.titulo,
+      group.name,
+      teacherSuffix,
+      fallback,
+    );
     let record = await this.groupRepos.findOne({
       where: { exerciseId, groupId },
     });

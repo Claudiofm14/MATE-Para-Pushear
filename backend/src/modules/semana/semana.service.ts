@@ -358,6 +358,7 @@ export class SemanaService {
           giteaTemplateRepoId: ejercicio.giteaTemplateRepoId,
           giteaTemplateCloneUrl: ejercicio.giteaTemplateCloneUrl,
           giteaAutoCreateRepo: ejercicio.giteaAutoCreateRepo,
+          createdById: ejercicio.createdById,
           semana: nuevaSemana,
         }),
       );

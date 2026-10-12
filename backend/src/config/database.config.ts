@@ -23,6 +23,19 @@ const positiveNumber = (value: string | undefined, fallback: number) => {
   return Number.isFinite(parsed) && parsed > 0 ? parsed : fallback;
 };
 
+const databaseSslOption = (host: string) => {
+  const configured = process.env.DATABASE_SSL?.trim().toLowerCase();
+  if (configured === 'true') return { rejectUnauthorized: false };
+  if (configured === 'false') return false;
+
+  const isLocalHost = ['localhost', '127.0.0.1', '::1'].includes(
+    host.toLowerCase(),
+  );
+  return isLocalHost && process.env.NODE_ENV !== 'production'
+    ? false
+    : { rejectUnauthorized: false };
+};
+
 const statementTimeoutMs = positiveNumber(
   process.env.DATABASE_STATEMENT_TIMEOUT_MS,
   30_000,
@@ -85,13 +98,15 @@ export const getDatabaseConnectionOptions = (
     };
   }
 
+  const databaseHost = process.env.DATABASE_HOST || 'localhost';
+
   return {
     type: 'postgres',
-    host: process.env.DATABASE_HOST || 'localhost',
+    host: databaseHost,
     port: parseInt(process.env.DATABASE_PORT || '5432', 10),
     username: process.env.DATABASE_USER || 'admin',
     password: process.env.DATABASE_PASSWORD || 'admin123',
-    ssl: { rejectUnauthorized: false },
+    ssl: databaseSslOption(databaseHost),
     database: process.env.DATABASE_NAME || 'proyecto_materias',
     extra: options.migrations
       ? {

@@ -1,7 +1,14 @@
-import { Entity, PrimaryGeneratedColumn, Column, ManyToOne } from 'typeorm';
+import {
+  Entity,
+  PrimaryGeneratedColumn,
+  Column,
+  ManyToOne,
+  JoinColumn,
+} from 'typeorm';
 import { ApiProperty } from '@nestjs/swagger';
 import { ConFecha } from './conFecha.abstract.entity';
 import { Semana } from './semana.entity';
+import { Usuario } from './usuario.entity';
 
 export type TipoActividadEjercicio =
   | 'programacion'
@@ -148,6 +155,19 @@ export class Ejercicio extends ConFecha {
 
   @Column({ type: 'boolean', default: false })
   allowLeaveAfterRepositoryCreation: boolean;
+
+  @ApiProperty({
+    description:
+      'Docente que creó el ejercicio (se usa para nombrar el repositorio grupal)',
+    type: () => Usuario,
+    required: false,
+  })
+  @ManyToOne(() => Usuario, { nullable: true, onDelete: 'SET NULL' })
+  @JoinColumn({ name: 'createdById' })
+  createdBy?: Usuario;
+
+  @Column({ nullable: true })
+  createdById?: number;
 
   @ManyToOne(() => Semana, (semana) => semana.ejercicios, {
     onDelete: 'CASCADE',

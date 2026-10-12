@@ -35,11 +35,17 @@ La aplicacion queda disponible en `http://localhost:3001`.
 
 ## Produccion
 
-El build Docker usa por defecto:
+El build Docker apunta por defecto a la API de producción. `VITE_API_URL` se
+incluye en el frontend durante la compilación; para usar otra API, pasá el valor
+como argumento al build:
 
 ```env
 VITE_API_URL=https://api.mate.unahur.edu.ar
 VITE_ENVIRONMENT=production
+```
+
+```bash
+docker build --build-arg VITE_API_URL=https://api.mate.unahur.edu.ar -t frontend .
 ```
 
 ## Autenticacion
