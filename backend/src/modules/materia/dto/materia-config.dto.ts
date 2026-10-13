@@ -20,6 +20,10 @@ export class MateriaTabsConfigDto {
 
   @IsBoolean()
   @IsOptional()
+  avance?: boolean;
+
+  @IsBoolean()
+  @IsOptional()
   cronograma?: boolean;
 
   @IsBoolean()

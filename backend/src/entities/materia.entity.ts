@@ -21,6 +21,7 @@ export const DEFAULT_MATERIA_CONFIG = {
     material: true,
     videos: true,
     semanas: true,
+    avance: true,
     cronograma: true,
     misAlumnos: true,
     planilla: true,
@@ -49,6 +50,11 @@ export const DEFAULT_MATERIA_CONFIG = {
     cronograma: {
       titulo: 'Cronograma',
       descripcion: 'Clases y actividades de la cursada.',
+    },
+    avance: {
+      titulo: 'Avance de Cursada',
+      descripcion:
+        'Visualizá el mapa de la materia. Las actividades y trabajos prácticos se irán habilitando a medida que completes cada entrega.',
     },
     misAlumnos: {
       titulo: 'Mis Alumnos',

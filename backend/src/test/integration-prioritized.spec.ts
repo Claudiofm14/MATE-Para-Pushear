@@ -1,9 +1,15 @@
 import { INestApplication, ValidationPipe } from '@nestjs/common';
 import { Test } from '@nestjs/testing';
+import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { DataSource, Repository } from 'typeorm';
 import * as request from 'supertest';
-import { ENTITIES } from '../entities/index.entity';
+import {
+  Actividad,
+  AvanceEjercicio,
+  EntregaActividad,
+  ENTITIES,
+} from '../entities/index.entity';
 import { MODULES } from '../modules/index.module';
 import { USER_ROLES } from '../auth/constants/roles.constant';
 import { Usuario } from '../entities/usuario.entity';
@@ -132,6 +138,7 @@ describe('prioritized backend integration coverage', () => {
 
     const moduleRef = await Test.createTestingModule({
       imports: [
+        ConfigModule.forRoot({ isGlobal: true, ignoreEnvFile: true }),
         TypeOrmModule.forRoot({
           type: 'postgres',
           host: process.env.DATABASE_HOST,
@@ -1417,5 +1424,195 @@ describe('prioritized backend integration coverage', () => {
       .field('asunto', 'Estaria bueno filtrar por comision')
       .field('mensaje', 'Para no tener que scrollear toda la lista.')
       .expect(201);
+  }, 60000);
+
+  it('persiste el avance en PostgreSQL, protege las comisiones y conserva las notas al reiniciar', async () => {
+    const materia = (
+      await http()
+        .post('/materia')
+        .set(asUser('admin'))
+        .send({ nombre: 'Materia con recorrido', codigo: 'AVANCE-TEST' })
+        .expect(201)
+    ).body;
+    const cursada = (
+      await http()
+        .post('/cursada')
+        .set(asUser('admin'))
+        .send({ titulo: 'Recorrido', materiaId: materia.id, activa: true })
+        .expect(201)
+    ).body;
+    const comisionA = (
+      await http()
+        .post('/comision')
+        .set(asUser('admin'))
+        .send({ nombre: 'A', cursadaId: cursada.id })
+        .expect(201)
+    ).body;
+    const comisionB = (
+      await http()
+        .post('/comision')
+        .set(asUser('admin'))
+        .send({ nombre: 'B', cursadaId: cursada.id })
+        .expect(201)
+    ).body;
+    const alumno = await usuarioRepository.findOneByOrFail({
+      authProviderId: users.alumno.sub,
+    });
+    const alumno2 = await usuarioRepository.findOneByOrFail({
+      authProviderId: users.alumno2.sub,
+    });
+    for (const estudiante of [alumno, alumno2]) {
+      await alumnoMateriaRepository.save(
+        alumnoMateriaRepository.create({
+          alumnoId: estudiante.id,
+          materiaId: materia.id,
+          comisionId: comisionA.id,
+          estado: 'aprobado',
+        }),
+      );
+    }
+    const ejercicios: Array<{ id: number }> = [];
+    for (const [index, [fechaInicio, comisionId, cantidad]] of [
+      ['2020-01-01', comisionA.id, 2],
+      ['2020-01-08', comisionA.id, 1],
+      ['2099-01-01', comisionA.id, 1],
+      ['2020-01-15', comisionB.id, 1],
+    ].entries()) {
+      const semana = (
+        await http()
+          .post('/semana')
+          .set(asUser('admin'))
+          .send({
+            titulo: `Semana ${index + 1}`,
+            descripcion: 'Contenido',
+            numeroSemana: index + 1,
+            fechaInicio,
+            cursadaId: cursada.id,
+            comisionIds: [comisionId],
+          })
+          .expect(201)
+      ).body;
+      for (let n = 0; n < Number(cantidad); n++) {
+        ejercicios.push(
+          (
+            await http()
+              .post('/ejercicio')
+              .set(asUser('admin'))
+              .send({
+                titulo: `Actividad ${index + 1}.${n + 1}`,
+                descripcion: 'Consigna',
+                semanaId: semana.id,
+                tipoActividad: 'instrucciones',
+              })
+              .expect(201)
+          ).body,
+        );
+      }
+    }
+    const url = `/avance/cursada/${cursada.id}`;
+    await http().get(url).set(asUser('externo')).expect(403);
+    const mapa = (
+      await http()
+        .get(`${url}?comisionId=${comisionB.id}`)
+        .set(asUser('alumno'))
+        .expect(200)
+    ).body;
+    expect(mapa.comisionId).toBe(comisionA.id);
+    expect(mapa.nodos).toHaveLength(3);
+    expect(mapa.nodos.map((nodo: any) => nodo.estado)).toEqual([
+      'pendiente',
+      'pendiente',
+      'bloqueado',
+    ]);
+    await http()
+      .put(`${url}/ejercicio/${ejercicios[2].id}`)
+      .set(asUser('alumno'))
+      .expect(403);
+    await http()
+      .put(`${url}/ejercicio/${ejercicios[3].id}`)
+      .set(asUser('alumno'))
+      .expect(404);
+    await http()
+      .put(`${url}/ejercicio/${ejercicios[4].id}`)
+      .set(asUser('alumno'))
+      .expect(404);
+    const primera = (
+      await http()
+        .put(`${url}/ejercicio/${ejercicios[0].id}`)
+        .set(asUser('alumno'))
+        .expect(200)
+    ).body;
+    const repetida = (
+      await http()
+        .put(`${url}/ejercicio/${ejercicios[0].id}`)
+        .set(asUser('alumno'))
+        .expect(200)
+    ).body;
+    expect(repetida.nodos[0].completadoEn).toBe(primera.nodos[0].completadoEn);
+    const progresoRepository = dataSource.getRepository(AvanceEjercicio);
+    expect(
+      await progresoRepository.countBy({
+        alumnoId: alumno.id,
+        cursadaId: cursada.id,
+      }),
+    ).toBe(1);
+    const ajeno = (await http().get(url).set(asUser('alumno2')).expect(200))
+      .body;
+    expect(ajeno.nodos.every((nodo: any) => !nodo.completadoEn)).toBe(true);
+    await http()
+      .put(`${url}/ejercicio/${ejercicios[1].id}`)
+      .set(asUser('alumno'))
+      .expect(200);
+    const habilitado = (await http().get(url).set(asUser('alumno')).expect(200))
+      .body;
+    expect(habilitado.nodos[2].estado).toBe('pendiente');
+    await http()
+      .put(`${url}/ejercicio/${ejercicios[0].id}`)
+      .set(asUser('alumno2'))
+      .expect(200);
+    const actividadRepository = dataSource.getRepository(Actividad);
+    const actividad = await actividadRepository.save(
+      actividadRepository.create({
+        nombre: 'Trabajo calificado',
+        materiaId: materia.id,
+        repositorioBase: 'https://example.com/tp-',
+        tipoCalificacion: 'numerico',
+      }),
+    );
+    const notasRepository = dataSource.getRepository(EntregaActividad);
+    const nota = await notasRepository.save(
+      notasRepository.create({
+        alumnoId: alumno.id,
+        actividadId: actividad.id,
+        notaNumerica: 9,
+      }),
+    );
+    await http().delete(`${url}/completadas`).set(asUser('alumno')).expect(200);
+    expect(
+      await progresoRepository.countBy({
+        alumnoId: alumno.id,
+        cursadaId: cursada.id,
+      }),
+    ).toBe(0);
+    expect(
+      await progresoRepository.countBy({
+        alumnoId: alumno2.id,
+        cursadaId: cursada.id,
+      }),
+    ).toBe(1);
+    expect(
+      Number(
+        (await notasRepository.findOneByOrFail({ id: nota.id })).notaNumerica,
+      ),
+    ).toBe(9);
+    const simulacion = (await http().get(url).set(asUser('admin')).expect(200))
+      .body;
+    expect(simulacion.simulacion).toBe(true);
+    expect(simulacion.nodos).toHaveLength(5);
+    await http()
+      .put(`${url}/ejercicio/${ejercicios[0].id}`)
+      .set(asUser('admin'))
+      .expect(403);
+    await http().delete(`${url}/completadas`).set(asUser('admin')).expect(403);
   }, 60000);
 });

@@ -42,6 +42,11 @@ const editableTabs: Array<{
     description: 'Clases y actividades de la cursada en formato tabular.',
   },
   {
+    key: 'avance',
+    label: 'Avance de Cursada',
+    description: 'Mapa de actividades, entregas y progreso personal.',
+  },
+  {
     key: 'misAlumnos',
     label: 'Mis Alumnos',
     description: 'Gestión de solicitudes y estudiantes.',
@@ -71,6 +76,7 @@ const headerPages = [
   { key: 'videos', label: 'Videos' },
   { key: 'semanas', label: 'Semanas' },
   { key: 'cronograma', label: 'Cronograma' },
+  { key: 'avance', label: 'Avance de Cursada' },
   { key: 'misAlumnos', label: 'Mis Alumnos' },
   { key: 'planilla', label: 'Planilla de Seguimiento' },
   // ✅ NUEVA LÍNEA - CAMBIO 2

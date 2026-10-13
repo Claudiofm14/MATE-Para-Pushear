@@ -91,6 +91,7 @@ export function Layout({ children }: LayoutProps) {
     { key: 'material', path: '/material', label: 'Material', visible: true },
     { key: 'videos', path: '/videos', label: 'Videos', visible: true },
     { key: 'semanas', path: '/semanas', label: 'Semanas', visible: true },
+    { key: 'avance', path: '/avance', label: 'Avance', visible: true },
     {
       key: 'cronograma',
       path: '/cronograma',
@@ -218,7 +219,7 @@ export function Layout({ children }: LayoutProps) {
               </span>
             </Link>
 
-            <ul className="hidden min-w-0 flex-1 items-center justify-center gap-1 font-medium xl:flex">
+            <ul className="hidden min-w-0 flex-1 items-center justify-center gap-1 font-medium min-[1700px]:flex">
               {materiaId && (
                 <li>
                   <Link
@@ -266,14 +267,14 @@ export function Layout({ children }: LayoutProps) {
           </div>
 
           <div className="flex flex-shrink-0 items-center gap-3">
-            <div className="hidden xl:block">
+            <div className="hidden min-[1700px]:block">
               <AuthStatus alwaysShow={true} />
             </div>
             <ThemeToggle />
 
             <button
               type="button"
-              className="inline-flex items-center rounded-xl border border-slate-200 p-2 text-sm text-slate-700 hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-emerald-300/60 dark:border-white/10 dark:text-slate-200 dark:hover:bg-white/10 xl:hidden"
+              className="inline-flex items-center rounded-xl border border-slate-200 p-2 text-sm text-slate-700 hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-emerald-300/60 dark:border-white/10 dark:text-slate-200 dark:hover:bg-white/10 min-[1700px]:hidden"
               aria-controls="navbar-default"
               aria-expanded={menuOpen}
               onClick={toggleMenu}
@@ -290,7 +291,7 @@ export function Layout({ children }: LayoutProps) {
           </div>
 
           <div
-            className={`${menuOpen ? 'block' : 'hidden'} absolute left-0 right-0 top-full z-40 max-h-[calc(100dvh-4.25rem)] w-full overflow-y-auto border-t border-slate-200 bg-white/95 px-4 pb-4 shadow-2xl shadow-slate-950/15 backdrop-blur-xl dark:border-white/10 dark:bg-slate-950/95 dark:shadow-slate-950/35 xl:hidden`}
+            className={`${menuOpen ? 'block' : 'hidden'} absolute left-0 right-0 top-full z-40 max-h-[calc(100dvh-4.25rem)] w-full overflow-y-auto border-t border-slate-200 bg-white/95 px-4 pb-4 shadow-2xl shadow-slate-950/15 backdrop-blur-xl dark:border-white/10 dark:bg-slate-950/95 dark:shadow-slate-950/35 min-[1700px]:hidden`}
             id="navbar-default"
           >
             <ul className="mt-4 flex flex-col rounded-2xl border border-slate-200 bg-slate-50/80 p-4 font-medium dark:border-white/10 dark:bg-white/5">

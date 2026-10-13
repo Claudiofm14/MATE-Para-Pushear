@@ -1,0 +1,614 @@
+.avance-content,
+.avance-dialog {
+  --av-surface: #fff;
+  --av-canvas: #f0f5fa;
+  --av-node: #fff;
+  --av-border: #d3e1ee;
+  --av-text: #0f172a;
+  --av-muted: #52647a;
+  --av-accent: #087f8c;
+  --av-success: #047857;
+  color: var(--av-text);
+}
+.dark .avance-content,
+.dark .avance-dialog {
+  --av-surface: #111c34;
+  --av-canvas: #080f22;
+  --av-node: #152345;
+  --av-border: #273952;
+  --av-text: #f4f8ff;
+  --av-muted: #a3b2c7;
+  --av-accent: #6ee7ed;
+  --av-success: #50dfbb;
+}
+.avance-content {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  min-width: 0;
+  gap: 24px;
+}
+.avance-page-container {
+  max-width: 1420px;
+}
+.avance-hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  padding: 32px;
+  border: 1px solid var(--av-border);
+  border-radius: 28px;
+  background: var(--av-surface);
+  box-shadow: 0 8px 30px #02061708;
+}
+.dark .avance-hero {
+  background: linear-gradient(110deg, #131c38, #172443 60%, #112a3d);
+}
+.avance-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 12px;
+  border: 1px solid #22b8b826;
+  border-radius: 30px;
+  color: var(--av-accent);
+  background: #14b8a610;
+  font-size: 12px;
+  font-weight: 700;
+}
+.avance-hero h1 {
+  margin-top: 14px;
+  font-size: clamp(28px, 3vw, 40px);
+  line-height: 1.15;
+  font-weight: 900;
+  letter-spacing: -1.2px;
+}
+.avance-hero p {
+  max-width: 720px;
+  margin-top: 16px;
+  color: var(--av-muted);
+  font-size: 14px;
+  line-height: 1.8;
+}
+.avance-progress-card {
+  width: 286px;
+  flex-shrink: 0;
+  border-radius: 20px;
+  padding: 23px;
+  border: 1px solid var(--av-border);
+  background: var(--av-canvas);
+}
+.avance-progress-label {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: var(--av-muted);
+  font-size: 13px;
+}
+.avance-progress-label strong {
+  color: var(--av-accent);
+  font-size: 17px;
+}
+.avance-progress-card progress {
+  display: block;
+  width: 100%;
+  height: 12px;
+  margin: 18px 0;
+  overflow: hidden;
+  border: 1px solid var(--av-border);
+  border-radius: 20px;
+  background: var(--av-border);
+}
+.avance-progress-card progress::-webkit-progress-bar {
+  background: var(--av-border);
+  border-radius: 20px;
+}
+.avance-progress-card progress::-webkit-progress-value {
+  background: #24d9b0;
+  border-radius: 20px;
+}
+.avance-progress-card progress::-moz-progress-bar {
+  background: #24d9b0;
+  border-radius: 20px;
+}
+.avance-progress-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  font-size: 11px;
+  color: var(--av-muted);
+}
+.avance-progress-footer button {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px;
+  border-radius: 6px;
+}
+.avance-progress-footer button:hover:not(:disabled) {
+  color: var(--av-accent);
+}
+.avance-progress-footer button:disabled {
+  opacity: 0.5;
+}
+.avance-simulation {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--av-accent);
+  font-size: 13px;
+}
+.avance-map-panel {
+  min-width: 0;
+  padding: 30px;
+  border: 1px solid var(--av-border);
+  border-radius: 26px;
+  background: var(--av-surface);
+}
+.avance-map-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 22px;
+}
+.avance-map-header h2 {
+  font-size: 18px;
+  font-weight: 800;
+}
+.avance-map-header p {
+  margin-top: 5px;
+  color: var(--av-muted);
+  font-size: 12px;
+}
+.avance-interactive {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  color: var(--av-accent);
+  font-size: 12px;
+  white-space: nowrap;
+}
+.avance-map-frame {
+  position: relative;
+  border: 1px solid var(--av-border);
+  border-radius: 20px;
+  background: var(--av-canvas);
+  overflow: hidden;
+}
+.avance-scroll {
+  width: 100%;
+  min-width: 0;
+  overflow: auto;
+  min-height: 450px;
+  max-height: 70vh;
+  padding: 32px 0 66px;
+  cursor: grab;
+  scrollbar-width: auto;
+  scrollbar-color: var(--av-border) var(--av-canvas);
+}
+.avance-scroll:active {
+  cursor: grabbing;
+}
+.avance-scaled-area {
+  position: relative;
+  margin: auto;
+}
+.avance-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform-origin: top left;
+}
+.avance-connections {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: visible;
+}
+.avance-edge {
+  fill: none;
+  stroke: var(--av-border);
+  stroke-width: 2;
+  stroke-dasharray: 7 7;
+}
+.avance-edge-active {
+  stroke: var(--av-success);
+  stroke-dasharray: none;
+  filter: drop-shadow(0 0 5px #27dab050);
+}
+.avance-edge-pulse {
+  fill: var(--av-success);
+  filter: drop-shadow(0 0 4px #27dab0a0);
+}
+.avance-node-root .avance-node-main strong {
+  font-size: 12px;
+}
+.avance-node {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 256px;
+  height: 160px;
+  padding: 20px;
+  text-align: left;
+  border: 1px solid var(--av-border);
+  border-radius: 20px;
+  background: var(--av-node);
+  box-shadow: 0 6px 24px #0206170b;
+  transition:
+    border-color 0.2s,
+    box-shadow 0.2s;
+  cursor: pointer;
+}
+.avance-node:hover:not([aria-disabled='true']) {
+  border-color: var(--av-accent);
+  box-shadow: 0 0 22px #22b8b824;
+}
+.avance-node-top,
+.avance-node-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  font-size: 10px;
+  color: var(--av-muted);
+}
+.avance-node-top > span:first-child {
+  padding: 4px 7px;
+  border-radius: 6px;
+  background: #64748b10;
+  white-space: nowrap;
+}
+.avance-state {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  color: var(--av-accent);
+  font-size: 11px;
+  font-weight: 600;
+}
+.avance-node-main {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.avance-node-main strong {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  font-size: 13px;
+  line-height: 1.45;
+  font-weight: 750;
+}
+.avance-node-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 46px;
+  height: 48px;
+  border: 1px solid #14b8a623;
+  border-radius: 13px;
+  background: #14b8a614;
+  color: var(--av-accent);
+}
+.avance-node-bottom {
+  align-items: flex-end;
+}
+.avance-node-bottom > span:last-child {
+  text-align: right;
+}
+.avance-node-entregado,
+.avance-node-root {
+  border-color: #27caaa50;
+}
+.avance-node-entregado .avance-state,
+.avance-node-root .avance-state,
+.avance-node-root .avance-node-icon {
+  color: var(--av-success);
+}
+.avance-node-pendiente {
+  border-color: #2bb9d070;
+  box-shadow: 0 0 20px #22b8b813;
+}
+.avance-node-bloqueado {
+  background: var(--av-surface);
+  border-style: dashed;
+  cursor: not-allowed;
+}
+.avance-node-bloqueado .avance-node-main,
+.avance-node-bloqueado .avance-node-top,
+.avance-node-bloqueado .avance-node-bottom {
+  color: var(--av-muted);
+  opacity: 0.8;
+}
+.avance-node-bloqueado .avance-state,
+.avance-node-bloqueado .avance-node-icon {
+  color: var(--av-muted);
+  background: #64748b0b;
+}
+.avance-zoom {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  bottom: 16px;
+  right: 16px;
+  padding: 6px;
+  border: 1px solid var(--av-border);
+  border-radius: 17px;
+  background: var(--av-surface);
+  box-shadow: 0 5px 24px #02061718;
+}
+.avance-zoom button {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 38px;
+  color: var(--av-accent);
+  border-radius: 10px;
+}
+.avance-zoom button:hover:not(:disabled) {
+  background: #14b8a612;
+}
+.avance-zoom button:disabled {
+  opacity: 0.4;
+}
+.avance-zoom .avance-zoom-value {
+  width: 56px;
+  color: var(--av-text);
+  font-size: 13px;
+  font-weight: 750;
+}
+.avance-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  margin-top: 18px;
+  font-size: 11px;
+  color: var(--av-muted);
+}
+.avance-legend span {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.avance-legend span:first-child {
+  color: var(--av-success);
+}
+.avance-empty {
+  display: grid;
+  justify-items: center;
+  gap: 12px;
+  min-height: 300px;
+  padding: 40px 20px;
+  border-radius: 18px;
+  background: var(--av-canvas);
+  color: var(--av-muted);
+  text-align: center;
+}
+.avance-empty h3 {
+  font-weight: 700;
+  color: var(--av-text);
+}
+.avance-empty p {
+  max-width: 480px;
+  font-size: 14px;
+}
+.avance-empty a {
+  color: var(--av-accent);
+  font-weight: 700;
+}
+.avance-dialog {
+  width: min(560px, calc(100vw - 32px));
+  max-height: calc(100dvh - 40px);
+  margin: auto;
+  padding: 0;
+  border: 1px solid var(--av-border);
+  border-radius: 26px;
+  background: var(--av-surface);
+  box-shadow: 0 24px 90px #02061770;
+}
+.avance-dialog::backdrop {
+  background: #020910c9;
+  backdrop-filter: blur(6px);
+}
+.avance-dialog-body {
+  position: relative;
+  padding: 30px;
+}
+.avance-dialog-close {
+  position: absolute;
+  display: grid;
+  place-items: center;
+  top: 20px;
+  right: 20px;
+  width: 36px;
+  height: 36px;
+  color: var(--av-muted);
+  border-radius: 12px;
+}
+.avance-dialog-close:hover {
+  background: #64748b15;
+  color: var(--av-text);
+}
+.avance-dialog-heading {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  padding: 0 30px 24px 0;
+  border-bottom: 1px solid var(--av-border);
+}
+.avance-dialog-heading h2 {
+  margin-top: 8px;
+  font-size: 19px;
+  font-weight: 800;
+  line-height: 1.45;
+}
+.avance-dialog-heading .avance-eyebrow {
+  font-size: 10px;
+  padding: 3px 10px;
+}
+.avance-dialog h3 {
+  margin: 22px 0 10px;
+  color: var(--av-muted);
+  font-size: 11px;
+  font-weight: 750;
+  letter-spacing: 0.5px;
+}
+.avance-dialog-description {
+  padding: 18px;
+  border-radius: 16px;
+  background: var(--av-canvas);
+  font-size: 14px;
+  line-height: 1.8;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+}
+.avance-dialog-description a {
+  color: var(--av-accent);
+  text-decoration: underline;
+}
+.avance-dialog-date {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 18px;
+  padding: 16px;
+  border: 1px solid var(--av-border);
+  border-radius: 13px;
+  font-size: 12px;
+}
+.avance-dialog-date span {
+  display: flex;
+  gap: 9px;
+  align-items: center;
+  color: var(--av-muted);
+}
+.avance-dialog-date svg {
+  color: var(--av-accent);
+}
+.avance-dialog-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 18px;
+}
+.avance-dialog-links a {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  color: var(--av-accent);
+  font-size: 12px;
+  font-weight: 650;
+}
+.avance-delivery-help {
+  margin-top: 18px;
+  color: var(--av-muted);
+  font-size: 11px;
+  line-height: 1.7;
+}
+.avance-dialog-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 28px;
+}
+.avance-button-primary,
+.avance-button-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 42px;
+  padding: 10px 15px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 700;
+}
+.avance-button-primary {
+  border: 1px solid #1bba9d55;
+  background: #14b8a621;
+  color: var(--av-success);
+}
+.avance-button-secondary {
+  background: #64748b14;
+  color: var(--av-muted);
+}
+.avance-button-primary:hover:not(:disabled),
+.avance-button-secondary:hover:not(:disabled) {
+  filter: brightness(1.15);
+}
+.avance-button-primary:disabled,
+.avance-button-secondary:disabled {
+  opacity: 0.65;
+}
+@media (max-width: 900px) {
+  .avance-hero {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 24px;
+    padding: 28px;
+  }
+  .avance-progress-card {
+    width: 100%;
+  }
+  .avance-map-panel {
+    padding: 22px;
+  }
+}
+@media (max-width: 600px) {
+  .avance-content {
+    gap: 18px;
+  }
+  .avance-hero {
+    padding: 24px;
+    border-radius: 22px;
+  }
+  .avance-hero p {
+    font-size: 13px;
+  }
+  .avance-map-panel {
+    padding: 18px 12px;
+    border-radius: 22px;
+  }
+  .avance-map-header {
+    padding: 0 4px;
+  }
+  .avance-map-header h2 {
+    font-size: 16px;
+  }
+  .avance-interactive {
+    display: none;
+  }
+  .avance-scroll {
+    min-height: 405px;
+    padding-top: 20px;
+  }
+  .avance-dialog-body {
+    padding: 22px;
+  }
+  .avance-dialog-heading {
+    gap: 12px;
+  }
+  .avance-dialog-heading h2 {
+    font-size: 17px;
+  }
+  .avance-dialog-actions {
+    gap: 8px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .avance-edge-pulse {
+    display: none;
+  }
+  .avance-node {
+    transition: none;
+  }
+}

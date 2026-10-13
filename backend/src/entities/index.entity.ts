@@ -34,6 +34,7 @@ import { UserActivity } from './user-activity.entity';
 import { ReporteSoporte } from './reporte-soporte.entity';
 import { MensajeSoporte } from './mensaje-soporte.entity';
 import { AdjuntoSoporte } from './adjunto-soporte.entity';
+import { AvanceEjercicio } from './avance-ejercicio.entity';
 
 export const ENTITIES = [
   Materia,
@@ -72,6 +73,7 @@ export const ENTITIES = [
   ReporteSoporte,
   MensajeSoporte,
   AdjuntoSoporte,
+  AvanceEjercicio,
 ];
 
 export {
@@ -111,4 +113,5 @@ export {
   ReporteSoporte,
   MensajeSoporte,
   AdjuntoSoporte,
+  AvanceEjercicio,
 };

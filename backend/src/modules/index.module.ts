@@ -20,6 +20,7 @@ import { TrashModule } from './trash/trash.module';
 import { GiteaStatusModule } from './gitea-status/gitea-status.module';
 import { CronogramaModule } from './cronograma/cronograma.module';
 import { SoporteModule } from './soporte/soporte.module';
+import { AvanceModule } from './avance/avance.module';
 
 export const MODULES = [
   MateriaModule,
@@ -44,6 +45,7 @@ export const MODULES = [
   GiteaStatusModule,
   CronogramaModule,
   SoporteModule,
+  AvanceModule,
 ];
 
 export {
@@ -69,4 +71,5 @@ export {
   GiteaStatusModule,
   CronogramaModule,
   SoporteModule,
+  AvanceModule,
 };

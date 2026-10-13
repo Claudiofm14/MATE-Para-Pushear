@@ -34,6 +34,7 @@ const SemanaDetailPage = React.lazy(() =>
   }))
 );
 const CronogramaPage = React.lazy(() => import('./app/cronograma/page'));
+const AvanceCursadaPage = React.lazy(() => import('./app/avance/page'));
 const MisAlumnosPage = React.lazy(() =>
   import('./app/mis-alumnos/page').then(module => ({
     default: module.MisAlumnosPage,
@@ -141,6 +142,14 @@ function App() {
                   element={
                     <Layout>
                       <SemanaDetailPage />
+                    </Layout>
+                  }
+                />
+                <Route
+                  path="/materia/:id/avance"
+                  element={
+                    <Layout>
+                      <AvanceCursadaPage />
                     </Layout>
                   }
                 />
