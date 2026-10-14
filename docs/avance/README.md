@@ -12,7 +12,7 @@ Docentes y administradores pueden simular el recorrido con los contenidos de su 
 
 ## Base de datos y API
 
-La migración `1779548265162-AddAvanceEjercicio` crea `avance_ejercicio`, con claves foráneas e índice único sobre alumno, cursada y ejercicio. Para desarrollo local, ejecutar `npm run migration:run` desde `backend` antes de usar el guardado. `npm run start:prod` ya ejecuta las migraciones automáticamente.
+La migración `1779548265162-AddAvanceEjercicio` crea `avance_ejercicio`, con claves foráneas e índice único sobre alumno, cursada y ejercicio. Los comandos `npm run start:local`, `npm run start:dev`, `npm run start:debug` y `npm run start:prod` ejecutan las migraciones pendientes antes de iniciar el servidor. Si el servidor ya estaba iniciado antes de actualizar el código, ejecutar `npm run migration:run` desde `backend` o reiniciarlo con uno de esos comandos. La tabla es necesaria tanto para consultar como para guardar el avance de alumnos.
 
 - `GET /avance/cursada/:cursadaId`: recorrido propio o simulación autorizada. Un alumno siempre usa su comisión; el parámetro `comisionId` sólo selecciona la comisión para la simulación docente.
 - `PUT /avance/cursada/:cursadaId/ejercicio/:ejercicioId`: registra avance propio, valida requisitos y conserva la fecha inicial ante reintentos.

@@ -35,7 +35,9 @@ El alumno se agrega como colaborador `write` sobre su repositorio. Los repos se 
 
 ### Migraciones
 
-Ejecutar:
+Los comandos `npm run start:local`, `npm run start:dev` y `npm run start:debug` ejecutan las migraciones pendientes antes de iniciar el servidor. Si una migracion falla, el servidor no inicia con un esquema incompleto. `npm run start:prod` tambien ejecuta las migraciones antes del arranque.
+
+Para aplicar las migraciones sin iniciar el servidor, ejecutar desde `backend`:
 
 ```bash
 npm run migration:run
